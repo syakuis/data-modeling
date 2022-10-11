@@ -1,11 +1,9 @@
 package io.github.syakuis.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.github.syakuis.domain.Account;
+import io.github.syakuis.domain.AccountEntity;
 import io.github.syakuis.domain.Email;
 import io.github.syakuis.mapper.ProfileMapper;
 import lombok.*;
-import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -17,10 +15,9 @@ import java.util.UUID;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
-@Accessors(fluent = true)
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode
 @ToString
-public class ProfileDto extends AccountDto {
+public class ProfileDto {
     private Long id;
     private UUID uid;
     private String username;
@@ -28,19 +25,7 @@ public class ProfileDto extends AccountDto {
     private LocalDateTime registeredOn;
     private LocalDateTime updatedOn;
 
-    public static ProfileDto of(Account account) {
-        return ProfileMapper.INSTANCE.toDto(account);
-    }
-
-    @JsonIgnore
-    @Override
-    public Boolean disabled() {
-        return false;
-    }
-
-    @JsonIgnore
-    @Override
-    public Boolean blocked() {
-        return false;
+    public static ProfileDto of(AccountEntity entity) {
+        return ProfileMapper.INSTANCE.toDto(entity);
     }
 }

@@ -1,7 +1,6 @@
 package io.github.syakuis.domain;
 
 import lombok.*;
-import lombok.experimental.Accessors;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.Column;
@@ -16,12 +15,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
-@Accessors(fluent = true)
 @Getter
 @EqualsAndHashCode
 @ToString
 @Embeddable
-public class EmailVo implements Email {
+public class EmailVo {
     @NotBlank
     @Column(name = "email_local_part", nullable = false, length = 64)
     private String localPart;

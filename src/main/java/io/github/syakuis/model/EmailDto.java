@@ -1,6 +1,6 @@
 package io.github.syakuis.model;
 
-import io.github.syakuis.domain.Email;
+import io.github.syakuis.domain.EmailVo;
 import io.github.syakuis.mapper.EmailMapper;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -17,13 +17,13 @@ import java.time.LocalDateTime;
 @Accessors(fluent = true)
 @EqualsAndHashCode
 @ToString
-public class EmailDto implements Email {
+public class EmailDto {
     private String localPart;
     private String domain;
     private LocalDateTime verifiedOn;
     private String value;
 
-    public static EmailDto of(Email email) {
+    public static EmailDto of(EmailVo email) {
         return EmailMapper.INSTANCE.toDto(email);
     }
 }

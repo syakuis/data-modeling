@@ -16,7 +16,7 @@ public interface EmailMapper {
     EmailMapper INSTANCE = Mappers.getMapper(EmailMapper.class);
 
     @Named("toEmailDto")
-    EmailDto toDto(Email email);
+    EmailDto toDto(EmailVo email);
 
     EmailVo toVo(Email email);
 }

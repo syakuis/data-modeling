@@ -14,10 +14,9 @@ import javax.transaction.Transactional;
 @RequiredArgsConstructor
 @Service
 @Transactional
-public class ProfileService implements ProfileUseCase<ProfileDto> {
+public class ProfileService {
     private final AccountRepository accountRepository;
 
-    @Override
     public ProfileDto object(long id) {
         return ProfileDto.of(accountRepository.selectOne(id));
     }

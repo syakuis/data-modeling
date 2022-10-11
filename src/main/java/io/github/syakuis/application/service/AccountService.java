@@ -17,20 +17,17 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 @Transactional
-public class AccountService implements AccountUseCase<AccountDto, AccountRequest> {
+public class AccountService {
     private final AccountRepository accountRepository;
 
-    @Override
     public List<AccountDto> list() {
         return accountRepository.select().stream().map(AccountMapper.INSTANCE::toDto).toList();
     }
 
-    @Override
     public AccountDto object(long id) {
         return AccountDto.of(accountRepository.selectOne(id));
     }
 
-    @Override
     public AccountDto update(AccountRequest account) {
         return null;
     }

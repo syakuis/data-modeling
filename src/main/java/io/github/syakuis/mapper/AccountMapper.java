@@ -1,8 +1,7 @@
 package io.github.syakuis.mapper;
 
-import io.github.syakuis.domain.Account;
+import io.github.syakuis.application.request.SignupRequest;
 import io.github.syakuis.domain.AccountEntity;
-import io.github.syakuis.domain.ModifiableAccount;
 import io.github.syakuis.model.AccountDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -15,7 +14,7 @@ import org.mapstruct.factory.Mappers;
 public interface AccountMapper {
     AccountMapper INSTANCE = Mappers.getMapper(AccountMapper.class);
 
-    AccountDto toDto(Account account);
+    AccountDto toDto(AccountEntity account);
 
-    AccountEntity toEntity(ModifiableAccount account);
+    AccountEntity toEntity(SignupRequest account);
 }

@@ -1,10 +1,6 @@
 package io.github.syakuis.application.request;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.github.syakuis.domain.Email;
-import io.github.syakuis.domain.ModifiableAccount;
 import lombok.*;
-import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotNull;
 
@@ -15,26 +11,13 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @Getter
-@Accessors(fluent = true)
 @EqualsAndHashCode
 @ToString
-public class AccountRequest implements ModifiableAccount {
+public class AccountRequest {
     @NotNull
-    private Email email;
+    private EmailRequest email;
     @NotNull
     private Boolean disabled;
     @NotNull
     private Boolean blocked;
-
-    @JsonIgnore
-    @Override
-    public String username() {
-        return null;
-    }
-
-    @JsonIgnore
-    @Override
-    public String password() {
-        return null;
-    }
 }

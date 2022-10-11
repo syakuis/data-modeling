@@ -1,6 +1,6 @@
 package io.github.syakuis.mapper;
 
-import io.github.syakuis.domain.Account;
+import io.github.syakuis.domain.AccountEntity;
 import io.github.syakuis.model.SignupDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -13,5 +13,5 @@ import org.mapstruct.factory.Mappers;
 public interface SignupMapper {
     SignupMapper INSTANCE = Mappers.getMapper(SignupMapper.class);
 
-    SignupDto toDto(Account account);
+    SignupDto toDto(AccountEntity entity);
 }

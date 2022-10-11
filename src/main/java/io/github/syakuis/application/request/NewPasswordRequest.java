@@ -1,7 +1,6 @@
 package io.github.syakuis.application.request;
 
 import lombok.*;
-import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -14,7 +13,6 @@ import java.util.Objects;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @Getter
-@Accessors(fluent = true)
 @EqualsAndHashCode
 @ToString
 public class NewPasswordRequest {

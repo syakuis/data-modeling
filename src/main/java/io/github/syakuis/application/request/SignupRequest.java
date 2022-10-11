@@ -1,10 +1,8 @@
 package io.github.syakuis.application.request;
 
 import io.github.syakuis.domain.AccountEntity;
-import io.github.syakuis.domain.ModifiableAccount;
 import io.github.syakuis.mapper.AccountMapper;
 import lombok.*;
-import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -16,10 +14,9 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
-@Accessors(fluent = true)
 @EqualsAndHashCode
 @ToString
-public class SignupRequest implements ModifiableAccount {
+public class SignupRequest {
     @NotNull
     @NotBlank
     private String username;
@@ -32,20 +29,5 @@ public class SignupRequest implements ModifiableAccount {
 
     public AccountEntity toEntity() {
         return AccountMapper.INSTANCE.toEntity(this);
-    }
-
-    @Override
-    public String password() {
-        return newPassword.password();
-    }
-
-    @Override
-    public Boolean disabled() {
-        return false;
-    }
-
-    @Override
-    public Boolean blocked() {
-        return false;
     }
 }

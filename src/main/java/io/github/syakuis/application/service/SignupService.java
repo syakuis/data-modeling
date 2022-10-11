@@ -15,12 +15,11 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Service
 @Transactional
-public class SignupService implements SignupUseCase<SignupDto, SignupRequest> {
+public class SignupService {
     private final AccountRepository accountRepository;
 
-    @Override
     public SignupDto register(SignupRequest signup) {
-        if (!signup.newPassword().isMatch()) {
+        if (!signup.getNewPassword().isMatch()) {
             throw new IllegalArgumentException("비밀번호가 다릅니다.");
         }
 

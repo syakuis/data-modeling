@@ -1,8 +1,8 @@
 package io.github.syakuis.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.github.syakuis.domain.Account;
+import io.github.syakuis.domain.AccountEntity;
 import io.github.syakuis.domain.Email;
+import io.github.syakuis.mapper.AccountMapper;
 import lombok.*;
 import lombok.experimental.Accessors;
 
@@ -19,7 +19,7 @@ import java.util.UUID;
 @Accessors(fluent = true)
 @EqualsAndHashCode
 @ToString
-public class AccountDto implements Account {
+public class AccountDto {
     private Long id;
     private UUID uid;
     private String username;
@@ -29,13 +29,7 @@ public class AccountDto implements Account {
     private Boolean disabled;
     private Boolean blocked;
 
-    public static AccountDto of(Account account) {
-        return null;
-    }
-
-    @JsonIgnore
-    @Override
-    public String password() {
-        return null;
+    public static AccountDto of(AccountEntity entity) {
+        return AccountMapper.INSTANCE.toDto(entity);
     }
 }

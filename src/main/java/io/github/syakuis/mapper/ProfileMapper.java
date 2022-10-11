@@ -1,6 +1,6 @@
 package io.github.syakuis.mapper;
 
-import io.github.syakuis.domain.Account;
+import io.github.syakuis.domain.AccountEntity;
 import io.github.syakuis.model.ProfileDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -13,5 +13,5 @@ import org.mapstruct.factory.Mappers;
 public interface ProfileMapper {
     ProfileMapper INSTANCE = Mappers.getMapper(ProfileMapper.class);
 
-    ProfileDto toDto(Account account);
+    ProfileDto toDto(AccountEntity entity);
 }

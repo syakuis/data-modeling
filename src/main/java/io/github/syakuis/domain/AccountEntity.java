@@ -1,7 +1,9 @@
 package io.github.syakuis.domain;
 
-import lombok.*;
-import lombok.experimental.Accessors;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SQLDelete;
@@ -21,7 +23,6 @@ import java.util.function.Supplier;
  */
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Accessors(fluent = true)
 @ToString
 @Entity
 @Table(
@@ -39,7 +40,7 @@ import java.util.function.Supplier;
         SET deleted = true
         WHERE id = ?
     """)
-public class AccountEntity implements Account {
+public class AccountEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -80,8 +81,7 @@ public class AccountEntity implements Account {
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean deleted;
 
-    @Builder
-    protected AccountEntity(String username, String password, EmailVo email, Boolean disabled, Boolean blocked) {
+    public AccountEntity(String username, String password, EmailVo email, Boolean disabled, Boolean blocked) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -102,7 +102,7 @@ public class AccountEntity implements Account {
 
     private void hasWithdrawn() {
         if (deleted) {
-            throw new DeletedAccountException();
+            throw new IllegalStateException("엔티티는 삭제되었습니다.");
         }
     }
 
@@ -115,16 +115,16 @@ public class AccountEntity implements Account {
     }
 
     public void update(AccountEntity accountEntity) {
-        if (accountEntity.email() != null) {
-            this.email =  accountEntity.email();
+        if (accountEntity.getEmail() != null) {
+            this.email =  accountEntity.getEmail();
         }
 
-        if (accountEntity.disabled() != null) {
-            this.disabled = accountEntity.disabled();
+        if (accountEntity.getDisabled() != null) {
+            this.disabled = accountEntity.getDisabled();
         }
 
-        if (accountEntity.blocked() != null) {
-            this.blocked = accountEntity.blocked();
+        if (accountEntity.getBlocked() != null) {
+            this.blocked = accountEntity.getBlocked();
         }
     }
 
