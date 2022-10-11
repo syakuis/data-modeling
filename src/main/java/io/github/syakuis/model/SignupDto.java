@@ -1,7 +1,6 @@
 package io.github.syakuis.model;
 
 import io.github.syakuis.domain.AccountEntity;
-import io.github.syakuis.domain.Email;
 import io.github.syakuis.mapper.SignupMapper;
 import lombok.*;
 
@@ -21,7 +20,7 @@ public class SignupDto {
     private Long id;
     private UUID uid;
     private String username;
-    private Email email;
+    private EmailDto email;
     private LocalDateTime registeredOn;
 
     public static SignupDto of(AccountEntity entity) {

@@ -10,7 +10,7 @@ import java.util.function.Predicate;
  * @author Seok Kyun. Choi.
  * @since 2022-08-23
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
 @EqualsAndHashCode(callSuper = true)

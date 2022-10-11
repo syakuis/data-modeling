@@ -36,10 +36,14 @@ public class EmailVo {
     }
 
     public static EmailVo of(final String email) {
-        String[] emailDiv = StringUtils.split(email, "@");
+        if (email == null || !email.contains("@")) {
+            throw new IllegalArgumentException("유효하지 않은 이메일 주소입니다.");
+        }
+
+        String[] cutting = StringUtils.split(email, "@");
 
         return EmailVo.builder()
-            .localPart(emailDiv[0])
-            .domain(emailDiv[1]).build();
+            .localPart(cutting[0])
+            .domain(cutting[1]).build();
     }
 }

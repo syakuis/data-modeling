@@ -1,28 +1,19 @@
 package io.github.syakuis.domain.repository;
 
 import io.github.syakuis.domain.AccountEntity;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Seok Kyun. Choi.
- * @since 2022-10-10
+ * @since 2021-05-21
  */
-@RequiredArgsConstructor
-@Repository
-public class AccountRepository {
-    private final AccountCrudRepository accountCrudRepository;
-    public AccountEntity save(AccountEntity entity) {
-        return accountCrudRepository.save(entity);
-    }
+interface AccountRepository extends Repository<AccountEntity, Long> {
+    List<AccountEntity> findAll();
 
-    public List<AccountEntity> select() {
-        return accountCrudRepository.findAll();
-    }
+    Optional<AccountEntity> findById(long id);
 
-    public AccountEntity selectOne(long id) {
-        return accountCrudRepository.findById(id).orElseThrow();
-    }
+    AccountEntity save(AccountEntity accountEntity);
 }

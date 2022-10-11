@@ -1,7 +1,8 @@
 package io.github.syakuis.application.service;
 
 import io.github.syakuis.application.request.AccountRequest;
-import io.github.syakuis.domain.repository.AccountRepository;
+import io.github.syakuis.domain.repository.AccountRepositoryAdapter;
+import io.github.syakuis.domain.repository.AccountRepositoryPort;
 import io.github.syakuis.mapper.AccountMapper;
 import io.github.syakuis.model.AccountDto;
 import lombok.RequiredArgsConstructor;
@@ -18,14 +19,14 @@ import java.util.List;
 @Service
 @Transactional
 public class AccountService {
-    private final AccountRepository accountRepository;
+    private final AccountRepositoryPort accountRepositoryPort;
 
     public List<AccountDto> list() {
-        return accountRepository.select().stream().map(AccountMapper.INSTANCE::toDto).toList();
+        return accountRepositoryPort.select().stream().map(AccountMapper.INSTANCE::toDto).toList();
     }
 
     public AccountDto object(long id) {
-        return AccountDto.of(accountRepository.selectOne(id));
+        return AccountDto.of(accountRepositoryPort.selectOne(id));
     }
 
     public AccountDto update(AccountRequest account) {

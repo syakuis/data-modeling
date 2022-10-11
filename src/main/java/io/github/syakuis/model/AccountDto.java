@@ -1,7 +1,6 @@
 package io.github.syakuis.model;
 
 import io.github.syakuis.domain.AccountEntity;
-import io.github.syakuis.domain.Email;
 import io.github.syakuis.mapper.AccountMapper;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -23,7 +22,7 @@ public class AccountDto {
     private Long id;
     private UUID uid;
     private String username;
-    private Email email;
+    private EmailDto email;
     private LocalDateTime registeredOn;
     private LocalDateTime updatedOn;
     private Boolean disabled;

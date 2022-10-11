@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
  * @author Seok Kyun. Choi.
  * @since 2022-10-10
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
 @EqualsAndHashCode

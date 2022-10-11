@@ -12,7 +12,8 @@ import javax.validation.constraints.NotNull;
  * @since 2022-08-24
  */
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder
 @Getter
 @EqualsAndHashCode
 @ToString

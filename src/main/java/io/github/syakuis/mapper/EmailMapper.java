@@ -1,6 +1,5 @@
 package io.github.syakuis.mapper;
 
-import io.github.syakuis.domain.Email;
 import io.github.syakuis.domain.EmailVo;
 import io.github.syakuis.model.EmailDto;
 import org.mapstruct.Mapper;
@@ -18,5 +17,5 @@ public interface EmailMapper {
     @Named("toEmailDto")
     EmailDto toDto(EmailVo email);
 
-    EmailVo toVo(Email email);
+    EmailVo toVo(EmailDto email);
 }

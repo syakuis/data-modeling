@@ -1,6 +1,6 @@
 package io.github.syakuis.application.service;
 
-import io.github.syakuis.domain.repository.AccountRepository;
+import io.github.syakuis.domain.repository.AccountRepositoryPort;
 import io.github.syakuis.model.ProfileDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,10 +15,10 @@ import javax.transaction.Transactional;
 @Service
 @Transactional
 public class ProfileService {
-    private final AccountRepository accountRepository;
+    private final AccountRepositoryPort accountRepositoryPort;
 
     public ProfileDto object(long id) {
-        return ProfileDto.of(accountRepository.selectOne(id));
+        return ProfileDto.of(accountRepositoryPort.selectOne(id));
     }
 
 }

@@ -1,9 +1,6 @@
 package io.github.syakuis.domain;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SQLDelete;
@@ -81,7 +78,8 @@ public class AccountEntity {
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean deleted;
 
-    public AccountEntity(String username, String password, EmailVo email, Boolean disabled, Boolean blocked) {
+    @Builder
+    protected AccountEntity(String username, String password, EmailVo email, Boolean disabled, Boolean blocked) {
         this.username = username;
         this.password = password;
         this.email = email;
